@@ -13,6 +13,10 @@ The final outcome is a set of Jira issues automatically created through the Jira
 ---
 
 ## ⚙️ Instructions
+
+
+### .env File
+
 A .env file should be created in the same folder that the Final_Project.ipynb exists, with the following parameters.
 
 Jira connection (required)
@@ -31,3 +35,29 @@ Custom fields (optional)
 
 Epic / Task handling options
 - TEAM_MANAGED_EPIC_PARENT=false    # Set to true if using Team-managed project where Epics behave differently
+
+
+### Input Files
+
+Document (.docx):
+Provide your requirements document in Word format. Example: requirements.docx.
+
+Database Schema (.txt):
+Provide the database schema in plain text. Example: schema.txt.
+This is only required if you want to generate SQL subtasks (include_sql=True).
+
+
+### Jira Setup
+
+Before running the pipeline, make sure:
+- You have Create Issues permission in the Jira project.
+- You have created an API Token in your Atlassian account.
+- The custom fields referenced in .env exist in your Jira project.
+- In Jira, the following groups should be created:
+      - Business Analysis Team
+      - Business Intelligence Team
+      - Configuration Engineer Team
+      - Data Warehouse Team
+      - Project Management Office (PMO)
+      - Quality Assurance Team
+  If you don't want to create these teams and you want other, you should also change the parameter "groups_list" in the Final_Project.ipynb in order to include them there also.
