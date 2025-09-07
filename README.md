@@ -54,10 +54,12 @@ Before running the pipeline, make sure:
 - You have created an API Token in your Atlassian account.
 - The custom fields referenced in .env exist in your Jira project.
 - In Jira, the following groups should be created:
-      - Business Analysis Team
-      - Business Intelligence Team
-      - Configuration Engineer Team
-      - Data Warehouse Team
-      - Project Management Office (PMO)
-      - Quality Assurance Team
-  If you don't want to create these teams and you want other, you should also change the parameter "groups_list" in the Final_Project.ipynb in order to include them there also.
+
+        - Business Analysis Team
+        - Business Intelligence Team
+        - Configuration Engineer Team
+        - Data Warehouse Team
+        - Project Management Office (PMO)
+        - Quality Assurance Team
+
+If you don't want to create these teams and you want other, you should also change the parameter "groups_list" in the Final_Project.ipynb in order to include them there also.
