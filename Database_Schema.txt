@@ -1,0 +1,89 @@
+-- Dim_Customer
+CREATE TABLE Dim_Customer (
+    CustomerID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    DateOfBirth DATE,
+    Gender ENUM('Male', 'Female', 'Other'),
+    CreatedDate DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Dim_Account
+CREATE TABLE Dim_Account (
+    AccountID INT PRIMARY KEY AUTO_INCREMENT,
+    CustomerID INT,
+    AccountNumber VARCHAR(20) UNIQUE,
+    AccountType ENUM('Checking', 'Savings', 'Credit', 'Loan'),
+    OpenDate DATE,
+    CloseDate DATE,
+    FOREIGN KEY (CustomerID) REFERENCES Dim_Customer(CustomerID)
+);
+
+-- Dim_Contact
+CREATE TABLE Dim_Contact (
+    ContactID INT PRIMARY KEY AUTO_INCREMENT,
+    CustomerID INT,
+    ContactType ENUM('Email', 'Phone', 'Address'),
+    ContactValue VARCHAR(255),
+    IsPrimary BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (CustomerID) REFERENCES Dim_Customer(CustomerID)
+);
+
+-- Dim_Service
+CREATE TABLE Dim_Service (
+    ServiceID INT PRIMARY KEY AUTO_INCREMENT,
+    ServiceName VARCHAR(100) NOT NULL,
+    ServiceCategory VARCHAR(50),
+    ServiceDescription TEXT
+);
+
+-- Dim_Branch
+CREATE TABLE Dim_Branch (
+    BranchID INT PRIMARY KEY AUTO_INCREMENT,
+    BranchName VARCHAR(100),
+    BranchType ENUM('Physical', 'Online'),
+    Address VARCHAR(255),
+    City VARCHAR(50),
+    State VARCHAR(50),
+    Country VARCHAR(50)
+);
+
+-- Dim_Currency
+CREATE TABLE Dim_Currency (
+    CurrencyID INT PRIMARY KEY AUTO_INCREMENT,
+    CurrencyCode CHAR(3) NOT NULL,
+    CurrencyName VARCHAR(50),
+    Symbol VARCHAR(5),
+    UNIQUE KEY uq_currency_code (CurrencyCode)
+);
+
+-- Fact_FXRate (daily rates or as-granular-as-you-load)
+CREATE TABLE IF NOT EXISTS Fact_FXRate (
+    RateDate DATE NOT NULL,
+    FromCurrencyID INT NOT NULL,
+    ToCurrencyID INT NOT NULL,
+    Rate DECIMAL(18,8) NOT NULL,
+    PRIMARY KEY (RateDate, FromCurrencyID, ToCurrencyID),
+    FOREIGN KEY (FromCurrencyID) REFERENCES Dim_Currency(CurrencyID)
+        ON UPDATE CASCADE ON DELETE RESTRICT,
+    FOREIGN KEY (ToCurrencyID) REFERENCES Dim_Currency(CurrencyID)
+        ON UPDATE CASCADE ON DELETE RESTRICT
+);
+
+-- Fact_Transaction
+CREATE TABLE Fact_Transaction (
+    TransactionID BIGINT PRIMARY KEY AUTO_INCREMENT,
+    AccountID INT NOT NULL,
+    ServiceID INT NULL,
+    BranchID INT NULL,
+    TransactionDate DATETIME NOT NULL,
+    Amount DECIMAL(15, 2) NOT NULL,
+    CurrencyID INT NOT NULL,
+    AmountBase DECIMAL(18, 2) NULL,
+    BaseCurrencyID INT NULL,
+    FXRateUsed DECIMAL(18,8) NULL,
+    FXRateDate DATE NULL,
+    TransactionType ENUM('Credit', 'Debit') NOT NULL,
+    Description TEXT,
+    FOREIGN KEY (AccountID) REFERENCES Dim_Account(AccountID)
+);
