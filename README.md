@@ -71,6 +71,6 @@ Near the end of the Final_Project.ipynb, there are two parameters, "doc_path" th
 
 The final Pipeline contains four parameter:
 - doc_path
-- schema_text (none if you do not want the option)
+- schema_text (None if you do not want the option)
 - include_sql (True or False)
 - include_assignee_group (True or False)
