@@ -69,7 +69,7 @@ If you don't want to create these teams and you want other, you should also chan
 
 Near the end of the Final_Project.ipynb, there are two parameters, "doc_path" that should contain your docx path and "schema_text" that should contain you database schema (txt file).
 
-The final Pipeline contains four parameter:
+The final Pipeline (run_pipeline), contains four parameter:
 - doc_path
 - schema_text (None if you do not want the option)
 - include_sql (True or False)
