@@ -62,7 +62,7 @@ Before running the pipeline, make sure:
         - Project Management Office (PMO)
         - Quality Assurance Team
 
-If you don't want to create these teams and you want other, you should also change the parameter "groups_list" in the Final_Project.ipynb in order to include them there also.
+If you don't want to create these groups and you want others, you should also change the parameter "groups_list" in the Final_Project.ipynb in order to include them there also.
 
 
 ### Running the pipeline
@@ -71,6 +71,16 @@ Near the end of the Final_Project.ipynb, there are two parameters, "doc_path" th
 
 The final Pipeline (run_pipeline), contains four parameter:
 - doc_path
-- schema_text (None if you do not want the option)
+- schema_text (None if you do not want to include SQL and Database read)
 - include_sql (True or False)
 - include_assignee_group (True or False)
+
+---
+
+After successfully installing the required libraries from requirements.txt, setting up your Jira account and project, and creating a .env file with the necessary parameters, you can run the run_pipeline function in Final_Project.ipynb.
+
+You may use the provided example files:
+- Technical_Document_01.docx (sample technical document)
+- Database_Schema.txt (sample database schema)
+
+Alternatively, you can create and use your own documents and schema.
