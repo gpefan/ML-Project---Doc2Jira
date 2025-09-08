@@ -5,7 +5,7 @@ This project implements an AI-driven pipeline that transforms project requiremen
 The system leverages multiple LLM-powered agents to:
 - Parse and review the document structure.
 - Predict labels, priorities, and assignee groups.
-- Optionally generate SQL subtasks (DDL + SELECT queries).
+- Optionally generate SQL subtasks (DDL + SELECT queries) and Assignee Groups.
 - Visualize the Jira ticket hierarchy in a tree view.
 
 The final outcome is a set of Jira issues automatically created through the Jira REST API.
@@ -16,6 +16,8 @@ The final outcome is a set of Jira issues automatically created through the Jira
 
 
 ### .env File
+
+
 
 A .env file should be created in the same folder that the Final_Project.ipynb exists, with the following parameters.
 
