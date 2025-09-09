@@ -1,11 +1,7 @@
-pandas
-numpy
-scikit-learn
-matplotlib
+## Libraries
 requests
+sqlglot
+pandas
 python-docx
-openpyxl
-streamlit
-pyvis
-networkx
-tqdm
+python-dotenv
+openai
