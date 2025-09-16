@@ -1,0 +1,6 @@
+JIRA_EMAIL=your_email@domain.com
+JIRA_API_TOKEN=your_jira_api_token
+JIRA_BASE_URL=https://yourworkspace.atlassian.net
+JIRA_PROJECT_KEY=target_jira_project_key
+JIRA_FIELD_ASSIGNED_GROUP=customfield_10124
+OPENAI_API_KEY=your_open_ai_api_token
