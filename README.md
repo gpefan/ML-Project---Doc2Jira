@@ -32,12 +32,8 @@ OPEN AI API Key (required)
 
 Custom fields (optional)
 - JIRA_FIELD_ASSIGNED_GROUP=customfield_10124  # Jira custom field for "Assigned Group". It is a custom field in Jira that should be created for all tickets (Epic, Task, Subtask) named "Assigned Group". By clicking on inspect, you can find customfield_... of the field and add it to the .env file
-- JIRA_EPIC_NAME_FIELD=customfield_10011       # Custom field for Epic Name (if required in your Jira)
-- JIRA_EPIC_LINK_FIELD=customfield_10014       # Custom field for Epic Link (if required in your Jira)
 
-Epic / Task handling options
-- TEAM_MANAGED_EPIC_PARENT=false    # Set to true if using Team-managed project where Epics behave differently
-
+---
 
 ### Input Files
 
