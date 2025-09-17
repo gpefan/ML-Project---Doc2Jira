@@ -79,13 +79,29 @@ If you don't want to create these groups and you want others, you should also ch
 
 ### Running the pipeline
 
-Near the end of the Final_Project.ipynb, there are two parameters, "doc_path" that should contain your docx path and "schema_text" that should contain you database schema (txt file).
+Near the end of the Final_Project.ipynb, there are two parameters
+- "doc_path" that should contain your docx path
+```
+# Document Path
+doc_path = "./Technical_Document_01.docx"
+```
+- and "schema_text" that should contain you database schema (txt file)
+```
+# Load Database Schema
+schema_text = load_schema_txt("./Database_Schema.txt")
+```
 
 The final Pipeline (run_pipeline), contains four parameter:
 - doc_path
 - schema_text (None if you do not want to include SQL and Database read)
 - include_sql (True or False)
 - include_assignee_group (True or False)
+
+Usage Example:
+```
+# Full run WITH SQL (requires schema_text and no Assignee Groups)
+run_pipeline(doc_path, schema_text, include_sql=True, include_assignee_group=False)
+```
 
 ---
 
